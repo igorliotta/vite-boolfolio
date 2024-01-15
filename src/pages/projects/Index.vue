@@ -3,6 +3,8 @@
 import axios from 'axios';
 import ProjectCard from '../../components/ProjectCard.vue';
 
+// Comment just for commit
+
 export default {
     components: {
         ProjectCard
