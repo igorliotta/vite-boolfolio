@@ -25,5 +25,6 @@ export default {
     padding: 25px;
     border-radius: 10px;
     background-color: lightseagreen;
+    border: 2px solid blue;
 }
 </style>
