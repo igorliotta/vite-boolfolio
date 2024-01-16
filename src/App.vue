@@ -1,17 +1,18 @@
 <script>
 
-import ProjectIndex from './pages/projects/index.vue';
+// import ProjectIndex from './pages/projects/index.vue';
 
 export default {
-  components: {
-    ProjectIndex
-  }
+  // components: {
+  //   ProjectIndex
+  // }
 }
 </script>
 
 <template>
  <div>
-  <ProjectIndex />
+  <!-- <ProjectIndex /> -->
+  <router-view></router-view>
  </div>
 </template>
 
