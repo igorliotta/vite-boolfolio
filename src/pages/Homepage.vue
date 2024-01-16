@@ -5,6 +5,12 @@ export default {
             title: 'Igor Liotta',
             jobTitle: 'Amatorial Developer'
         }
+    },
+    mounted() {
+        console.log('homepage montata')
+    },
+    unmounted() {
+        console.log('unmounted hompage')
     }
 }
 </script>

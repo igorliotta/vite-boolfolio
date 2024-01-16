@@ -21,7 +21,7 @@ export default {
         fetchProjects(url) {
             axios.get(url)
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 this.projects = res.data.results.data
                 this.nextUrl = res.data.results.next_page_url
                 this.prevUrl = res.data.results.prev_page_url
@@ -30,7 +30,13 @@ export default {
     },
     created() {
             this.fetchProjects(`${this.BASE_URL}/projects`)
-        }
+        },
+    mounted() {
+        console.log('projects.index montato')
+    },
+    unmounted() {
+        console.log('unmounted projects.index')
+    }
 }
 </script>
 
