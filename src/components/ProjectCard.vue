@@ -1,4 +1,6 @@
 <script>
+import { router } from '../router';
+
 
 export default {
     props: {
@@ -15,6 +17,7 @@ export default {
     <div class="card card-project">
         Titolo progetto: <h3> {{ project.title }}</h3>
         <p v-if="project.type">Classe: {{ project.type.name }}</p>
+        <router-link :to="{ name: 'projects.show', params: { slug: project.slug } }">More info...</router-link>
     </div>
 </template>
 
