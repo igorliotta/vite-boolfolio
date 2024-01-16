@@ -19,6 +19,12 @@ export default {
             .then(res => {
                 // console.log(res)
                 this.project = res.data.project;
+            }).catch((error) => {
+                console.log('project non found', error.response)
+
+                if (error.response.status === 404) {
+                    this.$router.push({ name: 'not-found' })
+                }
             })
         }
     },

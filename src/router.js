@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage.vue';
 import ProjectIndex from './pages/projects/Index.vue';
 import ProjectShow from './pages/projects/Show.vue';
 import Contact from './pages/Contact.vue';
+import NotFound from './pages/404.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
             name: 'contacts',
             component: Contact
         },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'not-found',
+            component: NotFound,
+        }
     ]
 });
 
