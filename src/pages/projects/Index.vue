@@ -13,20 +13,33 @@ export default {
         return {
             nextUrl: null,
             prevUrl: null,
+            lastPage: 0,
+            currentPage: 1,
             projects: [],
             BASE_URL: 'http://127.0.0.1:8000/api'
         }
     },
     methods: {
-        fetchProjects(url) {
-            axios.get(url)
+        fetchProjects() {
+            axios.get(`${this.BASE_URL}/projects`, { 
+            params: {
+                page: this.page
+                }
+            })
             .then((res) => {
                 // console.log(res)
                 this.projects = res.data.results.data
                 this.nextUrl = res.data.results.next_page_url
                 this.prevUrl = res.data.results.prev_page_url
+                this.lastPage = res.data.results.current_page
+                this.lastPage = res.data.results.last_page
             })
         },
+        setPage(n) {
+            this.page = n
+
+            this.fetchProjects()
+        }
     },
     created() {
             this.fetchProjects(`${this.BASE_URL}/projects`)
@@ -48,6 +61,13 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col" v-show="prevUrl" @click="fetchProjects(prevUrl)">Prev</div>
+                <div>
+                    <ul class="paginate">
+                        <li class="item" v-for="n in lastPage" :class="{ 'active' : n === page }" @click="setPage(n)">
+                            <span>{{ n }}</span>
+                        </li>
+                    </ul>
+                </div>
                 <div class="col" v-show="nextUrl" @click="fetchProjects(nextUrl)">Next</div>
             </div>
         </div>
@@ -84,4 +104,26 @@ export default {
     font-size: 18px;
     border: 2px solid lightseagreen;
 }
+
+.paginate {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+}
+
+.item {
+    width: 50px;
+    aspect-ratio: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid lightseagreen;
+}
+
+.active {
+    background-color: yellow;
+}
+
 </style>
