@@ -11,8 +11,8 @@ export default {
     },
     data() {
         return {
-            nextUrl: null,
-            prevUrl: null,
+            // nextUrl: null,
+            // prevUrl: null,
             lastPage: 0,
             currentPage: 1,
             projects: [],
@@ -29,8 +29,8 @@ export default {
             .then((res) => {
                 // console.log(res)
                 this.projects = res.data.results.data
-                this.nextUrl = res.data.results.next_page_url
-                this.prevUrl = res.data.results.prev_page_url
+                // this.nextUrl = res.data.results.next_page_url
+                // this.prevUrl = res.data.results.prev_page_url
                 this.lastPage = res.data.results.current_page
                 this.lastPage = res.data.results.last_page
             })
@@ -60,7 +60,7 @@ export default {
     <section>
         <div class="container">
             <div class="row">
-                <div class="col" v-show="prevUrl" @click="fetchProjects(prevUrl)">Prev</div>
+                <!-- <div class="col" v-show="prevUrl" @click="fetchProjects(prevUrl)">Prev</div> -->
                 <div>
                     <ul class="paginate">
                         <li class="item" v-for="n in lastPage" :class="{ 'active' : n === page }" @click="setPage(n)">
@@ -68,7 +68,7 @@ export default {
                         </li>
                     </ul>
                 </div>
-                <div class="col" v-show="nextUrl" @click="fetchProjects(nextUrl)">Next</div>
+                <!-- <div class="col" v-show="nextUrl" @click="fetchProjects(nextUrl)">Next</div> -->
             </div>
         </div>
     </section>

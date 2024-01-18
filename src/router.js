@@ -5,6 +5,7 @@ import ProjectIndex from './pages/projects/Index.vue';
 import ProjectShow from './pages/projects/Show.vue';
 import Contact from './pages/Contact.vue';
 import NotFound from './pages/404.vue'
+import Archivie from './pages/types/Archivie.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -24,6 +25,12 @@ const router = createRouter({
             name: 'projects.show',
             props: true,
             component: ProjectShow
+        },
+        {
+            path:'/type/:slug',
+            name:'types.archive',
+            props: true,
+            component: Archivie
         },
         {
             path: '/contatti',
